@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<title>Connect to FTP</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	</head>
+	<body class="container d-flex jumbotron align-items-center">
+		{% if invalid %}
+			<span style="color: red;">Can't connect. Please make sure that the FTP-address/username/password entered are correct.<br></span>
+		{% endif %}	
+		<form method="post" action="/set_ftp_address" class="form-group">
+			<label class="form-control">FTP Address:</label>
+			<input class="form-control" name="ftp_address" type="text" placeholder="192.168.1.1">
+			<label class="form-control">Username:</label>
+			<input class="form-control" name="user" type="text" placeholder="user">
+			<label class="form-control">Password:</label>
+			<input class="form-control" name="pass" type="password">
+			<input class="form-control" type="submit">
+		</form>
+	</body>
+</html>

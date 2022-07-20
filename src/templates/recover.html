@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<title>View Files</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	</head>
+	<body class="container jumbotron">
+		<form class="form-group" method="post" action="/recover">
+			<label class="form-control">Backup Path: {{ backup_path }}</label>
+			<input class="form-control" type="text" name="backup_path" value="{{ backup_path }}" style="display: none;">
+			<label class="form-control">Dataset Path:</label>
+			<input class="form-control" type="text" name="dataset_path" value="{{ dataset_path }}">
+			<label class="form-control">Output Path</label>
+			<input class="form-control" type="text" name="out_folder" value="{{ out_folder }}">
+			<label class="form-control">Recover state of the dataset before:</label>
+			<input class="form-control" type="text" name="req_time" value="{{ req_time }}">
+			<input class="form-control" type="submit">
+		</form>
+	</body>
+</html>

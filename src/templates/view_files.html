@@ -1,0 +1,56 @@
+<html>
+	<head>
+		<title>View Files</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	</head>
+	<body class="container jumbotron">
+		<div class="col-md-4">
+			<a class="btn btn-success" href="/view_files/backups/backup_folder">View Backups</a>
+			<a class="btn btn-info" href="/view_files/datasets/dataset_folder">View Datasets</a>
+		</div>
+		<div class="col-md-4">
+		{% if show_datasets %}
+		<div id="datasets_view">
+			<h2>Datasets View</h2>
+			<form method="get" action="/backup/{{ datasets_currdir }}">
+				<input class="btn btn-danger" type="submit" value="Backup this directory">
+			</form>
+			<a href="{{ datasets_listdir[0][0] }}"><= Back</a>
+			<ul>
+			{% for i in datasets_listdir[1:] %}
+				{% if i[1] %}
+					<li><a href="{{ datasets_currdir }}+{{ i[0] }}">{{ i[0] }}</a></li>
+				{% else %}
+					<li>{{ i[0] }}</li>
+					{% endif %}
+			{% endfor %}
+			</ul>
+		</div>
+		{% endif %}
+		{% if show_backups %}
+		<div id="backups_view">
+			<h2>Backups View</h2>
+			{% if is_valid_backup %}
+			<form method="get" action="/recover/{{ backups_currdir }}">
+				<input class="btn btn-danger" type="submit" value="Recover from this backup">
+			</form>
+			{% endif %}
+			<a href="{{ backups_listdir[0][0] }}"><= Back</a>
+			<ul>
+			{% for i in backups_listdir[1:] %}
+				{% if i[1] %}
+					<li><a href="{{ backups_currdir }}+{{ i[0] }}">{{ i[0] }}</a></li>
+				{% else %}
+					<li>{{ i[0] }}</li>
+					{% endif %}
+			{% endfor %}
+			</ul>
+		</div>
+		{% endif %}
+		</div>
+	</body>
+</html>
